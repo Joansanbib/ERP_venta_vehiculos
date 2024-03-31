@@ -1,0 +1,20 @@
+#header{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    background-image: linear-gradient(to bottom, rgba(224, 90, 14, 0.73), #fff);
+}
+#header #logo{
+    width: 7%;
+    height: 80%;
+    margin-left: 3%;
+}
+#header #user_icon{
+    width: 5%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    margin-right: 3%;
+}

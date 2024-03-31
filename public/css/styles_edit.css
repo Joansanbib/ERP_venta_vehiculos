@@ -1,0 +1,41 @@
+/* .form-control{
+    max-width: 40%;
+} */
+#edit{
+    background-color: #ffffff;
+    width: 30%;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    padding: 20px;
+    margin-top: 10%;
+    
+    
+}
+#alerta{
+    background-color: #ffffff;
+    width: 40%;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    padding: 20px;
+    margin-top: 10%;
+    text-align: center;
+}
+.delete_btn{
+    max-width: 150px !important;
+}
+#grafic{
+    height: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: start;
+}
+#chart{
+    width: 80% !important;
+    margin: auto !important;
+}
+#table_div{
+    display: block;
+}
