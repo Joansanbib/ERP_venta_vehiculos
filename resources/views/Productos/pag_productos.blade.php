@@ -68,7 +68,7 @@
                         const eliminarButton = gridjs.h('button', {
                             className: 'py-2 mb-4 px-4 border rounded-md text-white bg-red-600',
                             onClick: () => {
-                              var resultado = window.confirm("Segur que vols eliminar aquest registre?");
+                              var resultado = window.confirm("Seguro que quieres eliminar este registro?");
                                 if(resultado){
                                   window.location.href = `/producto/delete/${row.cells[0].data}`;
                                 }

@@ -42,7 +42,7 @@ public function store(Request $request)
 
      $id = 0;
      $existen_elem = DB::select("select * from ProdcutosServicios");
-     if (!is_null($existen_elem)){
+     if (!empty($existen_elem) && !is_null($existen_elem)){
         $id = DB::table('ProdcutosServicios')
             ->select(DB::raw('MAX(ProductoServicioID) + 1 AS NuevaID'))
             ->value('NuevaID');

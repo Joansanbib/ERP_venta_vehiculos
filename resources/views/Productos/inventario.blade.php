@@ -72,6 +72,17 @@
     });
 </script>
 <script>
-    alert("¡Hola! Esto es una alerta en JavaScript.");
+     var productos = <?php echo json_encode($query); ?>;
+     var productosSinStock = '';
+
+    productos.forEach(function(producto) {
+        if (producto.Stock <= 1) {
+            productosSinStock += producto.Nombre + " - Stock: " + producto.Stock + "\n";
+        }
+    });
+
+    if (productosSinStock !== '') {
+        alert("Los siguientes productos tienen el stock en bajo:\n\n" + productosSinStock);
+    }
 </script>
 @endsection
