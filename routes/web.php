@@ -27,5 +27,8 @@ Route::get('/charts', [ProductoController::class, 'show']);
 Route::get('/clientes', [ClienteController::class, 'index']);
 Route::get('/clientes/registro', [ClienteController::class, 'registro']);
 Route::post('/clientes/create', [ClienteController::class, 'store']);
+Route::get('/clientes/{num}/edit', [ClienteController::class, 'edit']);
+Route::get('/clientes/delete/{num}', [ClienteController::class, 'destroy']);
+Route::post('/clientes/{num}/update', [ClienteController::class, 'update']);
 Route::get('/clientes/validate_pob', [ClienteController::class, 'api_geocode']);
 Route::get('/clientes/mapa', [ClienteController::class, 'mapa']);
