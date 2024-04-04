@@ -63,6 +63,68 @@ class ClienteController extends Controller
          
     }
 
+    public function edit($cliente){
+        $resultado = DB::table('Clientes')->where('ClienteID', $cliente)->first();
+        return view('Clientes.edit', ['cliente' => $resultado]);
+    }
+
+    public function update(Request $request, $cliente){
+        $request->validate([
+            'editName' => 'nullable|string|max:50', 
+            'editApellido' => 'nullable|string|max:50', 
+            'editEmail' => 'nullable|string|max:100', 
+            'editTel' =>  'nullable|numeric',
+            'editContra' => 'nullable|string|max:50', 
+            'editDir' => 'nullable|string|max:120',
+            'editPob' =>  'nullable|string|max:120',
+         ]);
+
+         $resultado = [];
+
+        $nombre = $request->input('editName');
+        if(!is_null($nombre)){
+            $resultado["Nombre"] = $nombre;
+        }
+        $apellido = $request->input('editApellido');
+        if(!is_null($apellido)){
+            $resultado["Apellido"] = $apellido;
+        }
+        $email = $request->input('editEmail');
+        if(!is_null($email)){
+            $resultado["Email"] = $email;
+        }
+        $tel = $request->input('editTel');
+        if(!is_null($tel)){
+            $resultado["Teléfono"] = $tel;
+        }
+        $contra = $request->input('editContra');
+        if(!is_null($contra)){
+            $resultado["Contraseña"] = $contra;
+        }
+        $direccion = $request->input('editDir');
+        if(!is_null($direccion)){
+            $resultado["Dirección"] = $direccion;
+        }
+        $poblacion = $request->input('editPob');
+        if(!is_null($poblacion)){
+            $id = $cliente;
+            if (!empty($resultado)) {
+                DB::table('Clientes')
+                    ->where('ClienteID', $cliente) 
+                    ->update($resultado);
+            }
+            return view('Clientes.validate_pob', compact('poblacion', 'id'));
+        }
+        if (!empty($resultado)) {
+            DB::table('Clientes')
+                ->where('ClienteID', $cliente) 
+                ->update($resultado);
+        }
+        return redirect('/clientes');
+  
+        
+    }
+
     public function api_geocode(Request $request){
         $codigoPostal = $request->input('codigoPostal');
         $id = $request->input('id');
@@ -72,13 +134,19 @@ class ClienteController extends Controller
 
         DB::update("UPDATE Clientes SET Poblacion = ?, Latitud = ?, Longitud = ?, 
         Nombre_poblacion = ? WHERE ClienteID = ?", [$codigoPostal, $lat, $lng, $nombre, $id]);
-        return redirect('/');
+        return redirect('/clientes');
 
     }
 
     public function mapa(){
         $clientes = DB::select("select * from Clientes");
         return view('Clientes.mapa', ['clientes' => $clientes]);
+    }
+
+    public function destroy($cliente)
+    {
+        DB::table('Clientes')->where('ClienteID', $cliente)->delete();
+        return redirect('/clientes');
     }
     
 

@@ -40,7 +40,7 @@
         <option value="1">Administador</option>
         <option value="2">Cliente</option>
     </select>
-</div>
+   </div>
 
    <div class="flex justify-center mb-4">
       <button class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded focus:outline-none mr-4" type="submit" id="editar_prod">Crear cliente</button>

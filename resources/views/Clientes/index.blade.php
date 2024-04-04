@@ -10,6 +10,7 @@ foreach ($clientes as $cliente) {
     $codi_postal = $cliente->Poblacion;
 
     $grid_data[] = [
+        $cliente->ClienteID,
         $cliente->Nombre,
         $cliente->Apellido,
         $cliente->Email,
@@ -49,7 +50,10 @@ $grid_data_json = json_encode($grid_data);
 
     const grid = new gridjs.Grid({
         columns: [
-
+            { 
+                name: 'id',
+                hidden: true
+            },
             'Nombre',
             'Apellido',
             'Email',
@@ -60,7 +64,7 @@ $grid_data_json = json_encode($grid_data);
                     const editarButton = gridjs.h('button', {
                         className: 'py-2 mb-4 px-4 border rounded-md text-white bg-blue-600',
                         onClick: () => {
-                            window.location.href = `/producto/${row.cells[0].data}/edit`;
+                            window.location.href = `/clientes/${row.cells[0].data}/edit`;
                         }
                     }, 'Editar');
 
@@ -69,7 +73,7 @@ $grid_data_json = json_encode($grid_data);
                         onClick: () => {
                           var resultado = window.confirm("Seguro que quieres eliminar este registro?");
                             if(resultado){
-                              window.location.href = `/producto/delete/${row.cells[0].data}`;
+                              window.location.href = `/clientes/delete/${row.cells[0].data}`;
                             }
                         }
 

@@ -96,10 +96,10 @@ public function update(Request $request, $producto)
     //    'Stock' =>  'integer'
     // ];
     $request->validate([
-       'editName' => 'string|max:50', 
-       'editDesc' => 'string|max:120', 
-       'editPrecio' => 'numeric|regex:/^\d{1,18}$/',
-       'editStock' =>  'integer'
+       'editName' => 'nullable|string|max:50', 
+       'editDesc' => 'nullable|string|max:120', 
+       'editPrecio' => 'nullable|numeric|regex:/^\d{1,18}$/',
+       'editStock' =>  'nullable|integer'
     ]);
 
     $resultado = [];
