@@ -42,6 +42,9 @@
 <div id="grafic">
     <div id="chart"></div>
     <div id="table_div"></div>
+    <div>
+    <canvas id="myChart"></canvas>
+    </div>
 </div>
 <script>
     Morris.Bar({
