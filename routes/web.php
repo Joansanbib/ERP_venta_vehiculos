@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\VentaController;
 use App\Http\Controllers\PropuestaController;
+use App\Http\Controllers\UsuarioController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,29 +17,44 @@ use App\Http\Controllers\PropuestaController;
 |
 */
 
-//Productos
-Route::get('/', [ProductoController::class, 'index']);
-Route::get('/producto/{num}/edit', [ProductoController::class, 'edit']);
-Route::post('/producto/{num}/update', [ProductoController::class, 'update']);
-Route::get('/producto/delete/{num}', [ProductoController::class, 'destroy']);
-Route::get('/producto/create', [ProductoController::class, 'create']);
-Route::post('/create', [ProductoController::class, 'store']);
-Route::get('/charts', [ProductoController::class, 'show']);
+Route::middleware('auth')->group(function () {
+    //Clientes
+    Route::get('/clientes', [ClienteController::class, 'index']);
+    Route::get('/clientes/registro', [ClienteController::class, 'registro']);
+    Route::post('/clientes/create', [ClienteController::class, 'store'])->middleware('preventDirectAccess');
+    Route::get('/clientes/{num}/edit', [ClienteController::class, 'edit'])->middleware('preventDirectAccess');
+    Route::get('/clientes/delete/{num}', [ClienteController::class, 'destroy'])->middleware('preventDirectAccess');
+    Route::post('/clientes/{num}/update', [ClienteController::class, 'update'])->middleware('preventDirectAccess');
+    Route::get('/clientes/validate_pob', [ClienteController::class, 'api_geocode'])->middleware('preventDirectAccess');
+    Route::get('/clientes/mapa', [ClienteController::class, 'mapa']);
 
-//Clientes
-Route::get('/clientes', [ClienteController::class, 'index']);
-Route::get('/clientes/registro', [ClienteController::class, 'registro']);
-Route::post('/clientes/create', [ClienteController::class, 'store']);
-Route::get('/clientes/{num}/edit', [ClienteController::class, 'edit']);
-Route::get('/clientes/delete/{num}', [ClienteController::class, 'destroy']);
-Route::post('/clientes/{num}/update', [ClienteController::class, 'update']);
-Route::get('/clientes/validate_pob', [ClienteController::class, 'api_geocode']);
-Route::get('/clientes/mapa', [ClienteController::class, 'mapa']);
+    //Productos
+    Route::get('/', [ProductoController::class, 'index']);
+    Route::get('/producto/{num}/edit', [ProductoController::class, 'edit'])->middleware('preventDirectAccess');
+    Route::post('/producto/{num}/update', [ProductoController::class, 'update'])->middleware('preventDirectAccess');
+    Route::get('/producto/delete/{num}', [ProductoController::class, 'destroy'])->middleware('preventDirectAccess');
+    Route::get('/producto/create', [ProductoController::class, 'create']);
+    Route::post('/create', [ProductoController::class, 'store'])->middleware('preventDirectAccess');
+    Route::get('/charts', [ProductoController::class, 'show']);
 
-//Ventas y Propuestas
-Route::get('/propuestas', [PropuestaController::class, 'index']);
-Route::get('/propuestas/create', [PropuestaController::class, 'crear_propuesta']);
-Route::get('/propuestas/{num}/aceptar', [PropuestaController::class, 'aceptar_propuesta']);
-Route::post('/propuestas/store', [PropuestaController::class, 'store_propuesta']);
-Route::get('/propuestas/{num}/venta', [PropuestaController::class, 'crear_venta'])->middleware('preventDirectAccess');
-Route::post('/propuestas/{num}/venta/create', [PropuestaController::class, 'store'])->middleware('preventDirectAccess');
+    
+    //Ventas y Propuestas
+    Route::get('/propuestas', [PropuestaController::class, 'index']);
+    Route::get('/propuestas/create', [PropuestaController::class, 'crear_propuesta']);
+    Route::get('/propuestas/{num}/aceptar', [PropuestaController::class, 'aceptar_propuesta'])->middleware('preventDirectAccess');
+    Route::post('/propuestas/store', [PropuestaController::class, 'store_propuesta'])->middleware('preventDirectAccess');
+    Route::get('/propuestas/{num}/venta', [PropuestaController::class, 'crear_venta'])->middleware('preventDirectAccess');
+    Route::post('/propuestas/{num}/venta/create', [PropuestaController::class, 'store'])->middleware('preventDirectAccess');
+
+});
+ //Registro y login 
+ Route::get('/registro', [UsuarioController::class, 'crear_registro']);
+ Route::post('/registro/store', [UsuarioController::class, 'store_registro']);
+ Route::get('/login', [UsuarioController::class, 'login_view'])->name('login');
+ Route::post('/login/comprovacion', [UsuarioController::class, 'login']);
+
+
+
+
+
+//Falta acabar venta y propuestas y crear usuaris

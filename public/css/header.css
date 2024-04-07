@@ -4,7 +4,7 @@
     justify-content: space-between;
     align-items: center;
     margin: 0;
-    background-image: linear-gradient(to bottom, rgba(224, 90, 14, 0.73), #fff);
+    background-image: linear-gradient(to bottom, #2064a9, #fff);
 }
 #header #logo{
     width: 7%;

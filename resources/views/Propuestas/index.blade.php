@@ -36,41 +36,9 @@ foreach ($propuestas as $propuesta) {
 $grid_data_json = json_encode($grid_data);
 
 ?>
-<style>
-#btn-section{
-    width:100%;
-    min-height: 100px;
-    border: 1px solid black;
-    display:flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-items: center;
-}
-#table_div{
-    display:flex;
-    justify-content:center; 
-}
-#table_div td{
-    text-align: center;
-}
-#table_div tr{
-    text-align : center;
-}
-.button-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px; /* Ajusta el margen según sea necesario */
-}
-#btn-newElement{
-  width: 100px;
-  height: 100px;
-}
-
-</style>
 <div id="btn-section">
-<a href="#">
-        <button class="bg-blue-500 hover:bg-blue-600 text-white py-4 px-6 rounded focus:outline-none mr-5" type="submit" id="editar_prod">dadasdasd</button>
+<a href="/propuestas/create">
+    <button class="bg-blue-500 hover:bg-blue-600 text-white py-6 px-8 rounded focus:outline-none mr-5" type="submit" id="btn">CREAR PROPUESTA</button>
 </a>
 </div>
 <div id="table_div"></div>

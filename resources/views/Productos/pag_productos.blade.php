@@ -42,6 +42,14 @@
     }
 
 </style>
+<div id="btn-section">
+<a href="/producto/create">
+    <button class="bg-blue-500 hover:bg-blue-600 text-white py-6 px-8 rounded focus:outline-none mr-5" type="submit" id="btn">CREAR PRODUCTO</button>
+</a>
+<a href="/charts">
+    <button class="bg-blue-500 hover:bg-blue-600 text-white py-6 px-8 rounded focus:outline-none mr-5" type="submit" id="btn">VER INVENTARIO</button>
+</a>
+</div>
 <div id="table_div"></div>
 <script type="module">
     

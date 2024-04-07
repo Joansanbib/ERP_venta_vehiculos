@@ -2,6 +2,7 @@
 @section('titulo', "Clientes")
 <link href="{{ asset('/css/styles_edit.css')}}" rel="stylesheet">
 @section('body')
+
 <?php
 
 $grid_data = [];
@@ -45,6 +46,14 @@ $grid_data_json = json_encode($grid_data);
 }
 
 </style>
+<div id="btn-section">
+<a href="/clientes/registro">
+    <button class="bg-blue-500 hover:bg-blue-600 text-white py-6 px-8 rounded focus:outline-none mr-5" type="submit" id="btn">REGISTRAR CLIENTE</button>
+</a>
+<a href="/clientes/mapa">
+    <button class="bg-blue-500 hover:bg-blue-600 text-white py-6 px-8 rounded focus:outline-none mr-5" type="submit" id="btn">UBICACIÓN CLIENTES</button>
+</a>
+</div>
 <div id="table_div"></div>
 <script type="module">
 
