@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route; 
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\VentaController;
+use App\Http\Controllers\PropuestaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,3 +34,11 @@ Route::get('/clientes/delete/{num}', [ClienteController::class, 'destroy']);
 Route::post('/clientes/{num}/update', [ClienteController::class, 'update']);
 Route::get('/clientes/validate_pob', [ClienteController::class, 'api_geocode']);
 Route::get('/clientes/mapa', [ClienteController::class, 'mapa']);
+
+//Ventas y Propuestas
+Route::get('/propuestas', [PropuestaController::class, 'index']);
+Route::get('/propuestas/create', [PropuestaController::class, 'crear_propuesta']);
+Route::get('/propuestas/{num}/aceptar', [PropuestaController::class, 'aceptar_propuesta']);
+Route::post('/propuestas/store', [PropuestaController::class, 'store_propuesta']);
+Route::get('/propuestas/{num}/venta', [PropuestaController::class, 'crear_venta'])->middleware('preventDirectAccess');
+Route::post('/propuestas/{num}/venta/create', [PropuestaController::class, 'store'])->middleware('preventDirectAccess');

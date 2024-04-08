@@ -13,8 +13,8 @@ class ProductoController extends Controller
 */
 public function index()
 {
-$resultados = DB::select("select * from ProdcutosServicios");
-return view('Productos.pag_productos', ['productos' => $resultados]);
+    $resultados = DB::select("select * from ProdcutosServicios");
+    return view('Productos.pag_productos', ['productos' => $resultados]);
 
 }
 
@@ -34,7 +34,7 @@ public function store(Request $request)
     $request->validate([
         'editName' => 'string|max:50', 
         'editDesc' => 'string|max:120', 
-        'editPrecio' => 'numeric|regex:/^\d{1,18}$/',
+        'editPrecio' => 'numeric',
         'editStock' =>  'integer'
      ]);
  
