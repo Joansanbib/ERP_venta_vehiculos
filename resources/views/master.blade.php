@@ -23,6 +23,10 @@
     crossorigin="anonymous"></script>
     <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon"></script>
+
+
 
 
 </head>
@@ -170,9 +174,11 @@
             <a href="/clientes">Módulo Clientes</a>
             <a href="/propuestas">Módulo Propuestas y Ventas</a>
         </div>
+        <a href="/perfil">
         <button id="user-profile-btn">
             <i class="fas fa-user"></i> Perfil
         </button>
+        </a>
         @endauth
     </header>
 

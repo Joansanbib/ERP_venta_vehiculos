@@ -2,11 +2,11 @@
 @section('titulo', 'Crear propuesta')
 <link href="{{ asset('/css/styles_edit.css')}}" rel="stylesheet">
 @section('body')
-<h2 class="text-white">Nueva Propuesta</h2>
-<form id="form" action="/propuestas/store" method="post" class="max-w-md mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+
+<form id="form" action="/propuestas/store" method="post" class="max-w-lg mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 m-10">
    @csrf
-   <div class="mb-4">
-      <label class="block text-black text-sm font-bold mb-2" for="cliente">Cliente:</label>
+   <div class="mb-7">
+      <label class="block text-black text-lg font-bold mb-4" for="cliente">Cliente:</label>
       <div class="relative">
       <select name="cliente" id="cliente" class="py-2 px-3 border border-gray-300 rounded-md w-full focus:outline-none focus:border-indigo-500" required>
             @foreach($clientes as $cliente)
@@ -17,11 +17,11 @@
       <button type="button" class="absolute right-0 top-0 bottom-0 px-3 bg-gray-200" onclick="openModal()">Seleccionar Cliente</button>
       </div>
    </div>
-   <div class="mb-4">
-      <label class="block text-black text-sm font-bold mb-2" for="detalles">Detalles:</label>
+   <div class="mb-7">
+      <label class="block text-black text-lg font-bold mb-4" for="detalles">Detalles:</label>
       <input type="text" name="detalles" id="detalles" placeholder="Detalles" required class="py-2 px-3 border border-gray-300 rounded-md w-full focus:outline-none focus:border-indigo-500">
    </div>
-   <div class="flex justify-center mb-4">
+   <div class="flex justify-center">
       <button class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded focus:outline-none mr-4" type="submit" id="editar_prod">Crear propuesta</button>
    </div>
  
@@ -30,7 +30,7 @@
 <div id="myModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
-        <h3>Seleccionar Producto</h3>
+        <h3>Seleccionar Cliente</h3>
         <input type="text" id="searchInput" onkeyup="searchProduct()" placeholder="Buscar cliente...">
         <div class="table-container">
             <table id="productTable">

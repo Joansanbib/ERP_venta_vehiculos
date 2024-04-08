@@ -12,10 +12,10 @@
     });
 </script>
 @endif
-<h2 class="text-white">Crear venta</h2>
-<form id="form" action="/propuestas/{{$propuesta}}/venta/create" method="post" class="max-w-md mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+
+<form id="form" action="/propuestas/{{$propuesta}}/venta/create" method="post" class="max-w-lg mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 m-10">
    @csrf
-   <div class="mb-4">
+   <div class="mb-7">
     <label class="block text-black text-sm font-bold mb-2" for="setProducto">Producto: </label>
     <div class="relative">
         <select name="setProducto" id="setProducto" class="py-2 px-3 border border-gray-300 rounded-md w-full focus:outline-none focus:border-indigo-500" required>
@@ -26,15 +26,15 @@
         <button type="button" class="absolute right-0 top-0 bottom-0 px-3 bg-gray-200" onclick="openModal()">Seleccionar Producto</button>
     </div>
    </div>
-   <div class="mb-4">
+   <div class="mb-7">
       <label class="block text-black text-sm font-bold mb-2" for="setCant">Cantidad Vendida:</label>
       <input type="number" name="setCant" id="setCant" class="py-2 px-3 border border-gray-300 rounded-md w-full focus:outline-none focus:border-indigo-500" required>
    </div>
-   <div class="mb-4">
+   <div class="mb-7">
       <label class="block text-black text-sm font-bold mb-2" for="setPrecio">Precio Unitario:</label>
       <input type="number" name="setPrecio" id="setPrecio" class="py-2 px-3 border border-gray-300 rounded-md w-full focus:outline-none focus:border-indigo-500" required>
    </div>
-   <div class="flex justify-center mb-4">
+   <div class="flex justify-center">
       <button class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded focus:outline-none mr-4" type="submit" id="editar_prod">Crear venta</button>
    </div>
 </form>

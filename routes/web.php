@@ -46,12 +46,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/propuestas/{num}/venta', [PropuestaController::class, 'crear_venta'])->middleware('preventDirectAccess');
     Route::post('/propuestas/{num}/venta/create', [PropuestaController::class, 'store'])->middleware('preventDirectAccess');
 
+
 });
  //Registro y login 
  Route::get('/registro', [UsuarioController::class, 'crear_registro']);
- Route::post('/registro/store', [UsuarioController::class, 'store_registro']);
+ Route::post('/registro/store', [UsuarioController::class, 'store_registro'])->middleware('preventDirectAccess');
  Route::get('/login', [UsuarioController::class, 'login_view'])->name('login');
- Route::post('/login/comprovacion', [UsuarioController::class, 'login']);
+ Route::post('/login/comprovacion', [UsuarioController::class, 'login'])->middleware('preventDirectAccess');
+ Route::get('/perfil', [UsuarioController::class, 'edit_perfil']);
+ Route::get('/cerrar_sesion', [UsuarioController::class, 'cerrar_sesion'])->middleware('preventDirectAccess');
+ Route::get('/borrar_cuenta', [UsuarioController::class, 'borrar_cuenta'])->middleware('preventDirectAccess');
+ Route::post('/eliminar-cuenta/{id}', [UsuarioController::class, 'eliminarCuenta'])->middleware('preventDirectAccess');
+ Route::post('/perfil/update/{id}', [UsuarioController::class, 'perfil_update'])->middleware('preventDirectAccess');
 
 
 
