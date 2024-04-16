@@ -15,9 +15,7 @@
             confirmButtonText: 'Borrar cuenta',
             cancelButtonText: 'Cancelar'
         }).then((result) => {
-         console.log('1');
             if (result.isConfirmed) {
-               console.log('2');
                $.ajax({
                     type: 'POST',
                     url: '/eliminar-cuenta/'+id, 

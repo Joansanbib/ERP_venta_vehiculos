@@ -15,7 +15,14 @@
    </div>
    <div class="mb-7">
       <label class="block text-black text-lg font-bold mb-4" for="password">Contraseña: </label>
-      <input type="text" name="password" id="password" placeholder="Contraseña" required class="py-2 px-3 border border-gray-300 rounded-md w-full focus:outline-none focus:border-indigo-500">
+      <input type="password" name="password" id="password" placeholder="Contraseña" required class="py-2 px-3 border border-gray-300 rounded-md w-full focus:outline-none focus:border-indigo-500">
+   </div>
+   <div class="mb-7">
+      <label class="block text-black text-lg font-bold mb-4" for="rol">Rol: </label>
+      <select name="rol" id="rol" required class="py-2 px-3 border border-gray-300 rounded-md w-full focus:outline-none focus:border-indigo-500">
+         <option value="Cliente">Cliente</option>
+         <option value="Admin">Admin</option>
+      </select>
    </div>
    <p class="text-gray-500 cursor-pointer mb-4 text-center" onclick="window.location.href='/login'">¿Ya tienes cuenta? Identifícate aquí.</p>
    <div class="flex justify-center">

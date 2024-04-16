@@ -1,6 +1,6 @@
 @extends('master')
 @section('titulo', 'Propuestas')
-<link href="{{ asset('/css/styles_edit.css')}}" rel="stylesheet">
+<!-- <link href="{{ asset('/css/styles_edit.css')}}" rel="stylesheet"> -->
 @section('body')
 <?php
 use Illuminate\Support\Facades\DB;
@@ -30,6 +30,7 @@ foreach ($propuestas as $propuesta) {
         $propuesta->FechaCreación,
         $propuesta->Estado,
         $propuesta->Detalles,
+        "",
     ];
 }
 
@@ -108,8 +109,28 @@ $grid_data_json = json_encode($grid_data);
                     }
                 }
             },
+            {
+                name: 'Descargar',
+                formatter: (cell, row) => {
+                    // console.log(`Ruben ${JSON.stringify(row.cells[1].data)}`); 
+                    
+                    const array = [];
+                    for (let i = 0; i < 7; i++) {
+                        if (isNaN(row.cells[i].data)) {
+                            array.push(`'${row.cells[i].data}'`);
+                        } else {
+                            array.push(row.cells[i].data);
+                        }
+                    }
+                    return gridjs.html(`<img src="{{URL::asset('/img/pdf.png')}}" id="pdf-img" name="pdf-img" style="width: 25%; display: block; margin-left: auto; margin-right: auto;" onclick="generarPDF(${array})"/>`);
+
+                    
+                },
+                
+            }
             
         ],
+        
         sort: true,
         pagination: true,
         search: true,
@@ -117,4 +138,46 @@ $grid_data_json = json_encode($grid_data);
         data: <?php echo $grid_data_json; ?>
     }).render(document.getElementById('table_div'));
 </script>
+<script>
+        function generarPDF(identificador, id, venta, cliente, fecha, estado, detalles) {
+            let ifVenta;
+            if (venta == 1){
+                ifVenta = "venta";
+            }
+            else{
+                ifVenta = "propuesta";
+            }
+            var val = htmlToPdfmake(`
+            <style>
+            *{
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 20px;
+            }
+            </style>
+            <h1 style="text-align: center; text-decoration: underline;">INVOICE ${identificador}</h1>
+            <br>
+            <p>
+                <h3 style="text-align: center; font-weight: 100;">La empresa hace reporte de la factura número ${id+1} como una ${ifVenta} con los siguientes datos:</h3>
+            </p>
+            <hr>
+                <h3 style="text-align: center; font-style: italic; font-weight: 600;">Número de propuesta : </h3>
+                <h3 style="text-align: center; font-weight: 100;">${id+1}</h3>    
+                <h3 style="text-align: center; font-style: italic; font-weight: 600;">Identificador : </h3>         
+                <h3 style="text-align: center; font-weight: 100;">${identificador}</h3> 
+            <hr>
+                <h3 style="text-align: center; font-style: italic; font-weight: 600;">Creado por el cliente : </h3>
+                <h3 style="text-align: center; font-weight: 100;">${cliente}</h3>    
+                <h3 style="text-align: center; font-style: italic; font-weight: 600;">En la fecha: </h3>         
+                <h3 style="text-align: center; font-weight: 100;">${fecha}</h3> 
+            <hr>
+                <h3 style="text-align: center; font-style: italic; font-weight: 600;">Con estado : </h3>
+                <h3 style="text-align: center; font-weight: 100;">${estado}</h3>    
+                <h3 style="text-align: center; font-style: italic; font-weight: 600;">Con detalles : </h3>         
+                <h3 style="text-align: center; font-weight: 100;">${detalles}</h3> 
+            <hr>
+            `);
+            var dd = {content:val};
+            pdfMake.createPdf(dd).download('factura.pdf');
+        }
+    </script>
 @endsection

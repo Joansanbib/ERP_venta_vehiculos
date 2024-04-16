@@ -25,6 +25,10 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/luxon"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/vfs_fonts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html-to-pdfmake/browser.js"></script>
+
 
 
 
@@ -173,6 +177,7 @@
             <a href="/">Módulo Poductos y Servicios</a>
             <a href="/clientes">Módulo Clientes</a>
             <a href="/propuestas">Módulo Propuestas y Ventas</a>
+            <a href="/usuarios">Módulo Usuarios</a>
         </div>
         <a href="/perfil">
         <button id="user-profile-btn">

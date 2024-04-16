@@ -143,6 +143,20 @@ class ClienteController extends Controller
         return view('Clientes.mapa', ['clientes' => $clientes]);
     }
 
+    public function inventario(){
+        $productos_comprados = DB::select("select ClienteID, SUM(CantidadVendidad) AS Total from Venta_Propuestas vp inner join VentaDetalles vd
+        on vp.PropuestaID = vd.PropuestaID
+        group by ClienteID");
+
+        $avg_preu_usuaris = DB::select("select ClienteID, avg(PrecioUnitario) as average from Venta_Propuestas vp inner join VentaDetalles vd
+        on vp.PropuestaID = vd.PropuestaID
+        group by ClienteID");
+
+
+        return view('Clientes.inventario',  compact('productos_comprados', 'avg_preu_usuaris'));
+
+    }
+
     public function destroy($cliente)
     {
         DB::table('Clientes')->where('ClienteID', $cliente)->delete();

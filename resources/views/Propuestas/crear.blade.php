@@ -14,7 +14,7 @@
             @endforeach
       </select>
       <!-- <input type="text" name="cliente" id="cliente" placeholder="Cliente" required class="py-2 px-3 border border-gray-300 rounded-md w-full focus:outline-none focus:border-indigo-500"> -->
-      <button type="button" class="absolute right-0 top-0 bottom-0 px-3 bg-gray-200" onclick="openModal()">Seleccionar Cliente</button>
+      <button type="button" class="absolute right-0 top-0 bottom-0 px-3 bg-gray-200" >Seleccionar Cliente</button>
       </div>
    </div>
    <div class="mb-7">

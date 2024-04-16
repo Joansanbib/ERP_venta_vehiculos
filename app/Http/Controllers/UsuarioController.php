@@ -126,4 +126,18 @@ class UsuarioController extends Controller
             return redirect('login');
         }
     }
+    public function index(){
+        $usuarios = DB::select("select * from users");  
+        return view('Identificacion.index', ['usuarios' => $usuarios]);
+
+    }
+    public function edit($id){
+        $user = User::find($id);
+        $nombre = $user->name;
+        $email = $user->email;
+        $password = $user->password;
+
+        return view('Identificacion.edit_perfil', ['nombre' => $nombre, 'email' => $email, 'pass' => $password, 'id' => $id]);
+        
+    }
 }
